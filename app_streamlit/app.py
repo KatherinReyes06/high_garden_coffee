@@ -397,6 +397,7 @@ elif pagina == "Exploración":
             yaxis_title='Consumo Total (tazas)',
             template='plotly_white', height=500
         )
+        fig.update_traces(hovertemplate='Año: %{x}<br>Consumo: %{y:,.0f} tazas')
         fig = tick_formato_millones(fig)
         st.plotly_chart(fig, use_container_width=True)
     
@@ -414,6 +415,7 @@ elif pagina == "Exploración":
             xaxis_title='Consumo Total Acumulado (tazas)',
             template='plotly_white', height=500
         )
+        fig.update_traces(hovertemplate='%{y}: %{x:,.0f} tazas (%{text})')
         st.plotly_chart(fig, use_container_width=True)
     
     with tab3:
@@ -427,6 +429,7 @@ elif pagina == "Exploración":
             xaxis_title='Año', yaxis_title='Consumo (tazas)',
             template='plotly_white', height=500, legend_title='Tipo de Café'
         )
+        fig.update_traces(hovertemplate='Año: %{x}<br>Consumo: %{y:,.0f} tazas')
         st.plotly_chart(fig, use_container_width=True)
     
     with tab4:
@@ -532,6 +535,8 @@ elif pagina == "Modelos y Predicciones":
             xaxis_title='Año', yaxis_title='Consumo Total (tazas)',
             template='plotly_white', height=500
         )
+        fig.update_traces(hovertemplate='Año: %{x}<br>Consumo: %{y:,.0f} tazas', selector=dict(name='Consumo Real'))
+        fig.update_traces(hovertemplate='Año: %{x}<br>Predicción: %{y:,.0f} tazas', selector=dict(name='Predicción'))
         fig = tick_formato_millones(fig)
         st.plotly_chart(fig, use_container_width=True)
         
