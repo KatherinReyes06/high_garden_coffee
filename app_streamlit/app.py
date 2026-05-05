@@ -143,9 +143,10 @@ def traducir(nombre):
 # ============================================================
 @st.cache_data
 def cargar_datos():
-    df_consumo = pd.read_parquet('coffee_db.parquet')
-    df_arabica = pd.read_csv('arabica_precios.csv')
-    df_robusta = pd.read_csv('robusta_precios.csv')
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    df_consumo = pd.read_parquet(os.path.join(BASE_DIR, 'coffee_db.parquet'))
+    df_arabica = pd.read_csv(os.path.join(BASE_DIR, 'arabica_precios.csv'))
+    df_robusta = pd.read_csv(os.path.join(BASE_DIR, 'robusta_precios.csv'))
     
     df_arabica = df_arabica.rename(columns={
         'observation_date': 'Fecha',
