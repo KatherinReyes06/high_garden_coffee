@@ -427,7 +427,11 @@ elif pagina == "Exploración":
                       color='Tipo_Cafe', color_discrete_map=colores, markers=True)
         fig.update_layout(
             xaxis_title='Año', yaxis_title='Consumo (tazas)',
-            template='plotly_white', height=500, legend_title='Tipo de Café'
+            template='plotly_white', height=500, legend_title='Tipo de Café',
+            yaxis=dict(
+                tickvals=[0, 200e6, 400e6, 600e6, 800e6, 1e9, 1.2e9, 1.4e9, 1.6e9],
+                ticktext=['0', '200M', '400M', '600M', '800M', '1,000M', '1,200M', '1,400M', '1,600M']
+            )
         )
         fig.update_traces(hovertemplate='Año: %{x}<br>Consumo: %{y:,.0f} tazas')
         st.plotly_chart(fig, use_container_width=True)
